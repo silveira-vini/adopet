@@ -55,7 +55,7 @@ public class AdopetConsoleApplication {
     private static void listarAbrigos() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         String uri = "http://localhost:8080/abrigos";
-        var response = dispararRequisicaoGet(client, uri);
+        HttpResponse<String> response = dispararRequisicaoGet(client, uri);
         String responseBody = response.body();
         JsonArray jsonArray = JsonParser.parseString(responseBody).getAsJsonArray();
         System.out.println("Abrigos cadastrados:");
@@ -82,7 +82,7 @@ public class AdopetConsoleApplication {
 
         HttpClient client = HttpClient.newHttpClient();
         String uri = "http://localhost:8080/abrigos";
-        var response = dispararRequisicaoPost(client, uri, json);
+        HttpResponse<String> response = dispararRequisicaoPost(client, uri, json);
         int statusCode = response.statusCode();
         String responseBody = response.body();
         if (statusCode == 200) {
@@ -100,7 +100,7 @@ public class AdopetConsoleApplication {
 
         HttpClient client = HttpClient.newHttpClient();
         String uri = "http://localhost:8080/abrigos/" + idOuNome + "/pets";
-        var response = dispararRequisicaoGet(client, uri);
+        HttpResponse<String> response = dispararRequisicaoGet(client, uri);
         int statusCode = response.statusCode();
         if (statusCode == 404 || statusCode == 500) {
             System.out.println("ID ou nome não cadastrado!");
@@ -152,7 +152,7 @@ public class AdopetConsoleApplication {
 
             HttpClient client = HttpClient.newHttpClient();
             String uri = "http://localhost:8080/abrigos/" + idOuNome + "/pets";
-            var response = dispararRequisicaoPost(client, uri, json);
+            HttpResponse<String> response = dispararRequisicaoPost(client, uri, json);
             int statusCode = response.statusCode();
             String responseBody = response.body();
             if (statusCode == 200) {
@@ -185,5 +185,4 @@ public class AdopetConsoleApplication {
                 .build();
         return client.send(request, HttpResponse.BodyHandlers.ofString());
     }
-
 }
