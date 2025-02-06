@@ -2,6 +2,7 @@ package br.com.alura.service;
 
 import br.com.alura.client.ClientHttpConfiguration;
 import br.com.alura.domain.Pet;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -11,7 +12,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.http.HttpResponse;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class PetService {
@@ -32,18 +35,18 @@ public class PetService {
             System.out.println("ID ou nome não cadastrado!");
         }
         String responseBody = response.body();
-        JsonArray jsonArray = JsonParser.parseString(responseBody).getAsJsonArray();
-        System.out.println("Pets cadastrados:");
-        for (JsonElement element : jsonArray) {
-            JsonObject jsonObject = element.getAsJsonObject();
-            long id = jsonObject.get("id").getAsLong();
-            String tipo = jsonObject.get("tipo").getAsString();
-            String nome = jsonObject.get("nome").getAsString();
-            String raca = jsonObject.get("raca").getAsString();
-            int idade = jsonObject.get("idade").getAsInt();
+        Pet[] Pets = new ObjectMapper().readValue(responseBody, Pet[].class);
+        List<Pet> listaPets = Arrays.stream(Pets).toList();
 
-            System.out.println(id + " - " + tipo + " - " + nome + " - " + raca + " - " + idade + " ano(s)");
-        }
+        System.out.println("Pets cadastrados:");
+        listaPets.forEach(pet -> {
+            Long id = pet.getId();
+            String tipo = pet.getTipo();
+            String nome = pet.getNome();
+            String raca = pet.getRaca();
+            System.out.println(id + " - " + tipo + " - " + nome + " - " + raca);
+        });
+
     }
 
     public void importarPets() throws IOException, InterruptedException {

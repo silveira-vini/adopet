@@ -2,6 +2,7 @@ package br.com.alura.domain;
 
 public class Pet {
 
+    private Long id;
     private String tipo;
     private String nome;
     private String raca;
@@ -64,5 +65,9 @@ public class Pet {
 
     public void setPeso(Float peso) {
         this.peso = peso;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
