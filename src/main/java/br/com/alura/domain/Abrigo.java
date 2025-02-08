@@ -47,11 +47,9 @@ public class Abrigo {
         return id;
     }
 
-    public List<Pet> getPets() {
-        return pets;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
-    }
+    public List<Pet> getPets() { return pets; }
+
+    public void setPets(List<Pet> pets) { this.pets = pets; }
 }
