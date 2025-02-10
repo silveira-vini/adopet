@@ -47,9 +47,23 @@ public class Abrigo {
         return id;
     }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public List<Pet> getPets() { return pets; }
+    public List<Pet> getPets() {
+        return pets;
+    }
 
-    public void setPets(List<Pet> pets) { this.pets = pets; }
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
+
+    @Override
+    public String toString() {
+        return """
+                "id":%s,"nome":"%s","telefone":"%s","email":"%s"
+                """.formatted(this.id, this.nome, this.telefone, this.email);
+    }
+
 }

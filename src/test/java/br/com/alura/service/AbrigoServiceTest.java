@@ -2,8 +2,8 @@ package br.com.alura.service;
 
 import br.com.alura.client.ClientHttpConfiguration;
 import br.com.alura.domain.Abrigo;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,8 +31,6 @@ public class AbrigoServiceTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        String jsonResponse = "[{\"id\":0,\"nome\":\"Teste\",\"telefone\":\"61981880392\",\"email\":\"abrigo_alura@gmail.com\"}]";
-
         when(response.body()).thenReturn("[{"+abrigo.toString()+"}]");
         when(client.dispararRequisicaoGet(anyString())).thenReturn(response);
 
@@ -42,8 +40,8 @@ public class AbrigoServiceTest {
         String actualAbrigosCadastrados = lines[0];
         String actualIdENome = lines[1];
 
-        Assert.assertEquals(expectedAbrigosCadastrados, actualAbrigosCadastrados);
-        Assert.assertEquals(expectedIdENome, actualIdENome);
+        Assertions.assertEquals(expectedAbrigosCadastrados, actualAbrigosCadastrados);
+        Assertions.assertEquals(expectedIdENome, actualIdENome);
     }
 
 }
