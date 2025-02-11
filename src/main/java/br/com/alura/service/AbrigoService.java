@@ -30,7 +30,6 @@ public class AbrigoService {
         List<Abrigo> abrigoList = Arrays.stream(abrigos).toList();
         if (abrigoList.isEmpty()) {
             System.out.println("Não há abrigos cadastrados.");
-            return;
         } else {
             System.out.println("Abrigos cadastrados:");
             abrigoList.forEach(abrigo -> {
