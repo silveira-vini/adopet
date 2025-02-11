@@ -15,7 +15,7 @@ public class ImportarPetsCommand implements Command{
 
             petService.importarPets();
         } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 }

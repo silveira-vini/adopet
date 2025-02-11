@@ -15,7 +15,7 @@ public class ListarPetsCommand implements Command{
 
             petService.listarPets();
         } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
 
     }

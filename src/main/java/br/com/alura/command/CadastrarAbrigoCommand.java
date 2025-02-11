@@ -16,7 +16,7 @@ public class CadastrarAbrigoCommand implements Command {
 
             abrigoService.cadastrarAbrigo();
         } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 }

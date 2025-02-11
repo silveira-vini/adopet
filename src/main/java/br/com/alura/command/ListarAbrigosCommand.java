@@ -18,7 +18,7 @@ public class ListarAbrigosCommand implements Command {
             abrigoService.listarAbrigos();
 
         } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
 
     }
