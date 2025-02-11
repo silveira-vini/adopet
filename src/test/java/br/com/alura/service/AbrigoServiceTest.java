@@ -42,6 +42,7 @@ public class AbrigoServiceTest {
 
         Assertions.assertEquals(expectedAbrigosCadastrados, actualAbrigosCadastrados);
         Assertions.assertEquals(expectedIdENome, actualIdENome);
+
     }
 
     @Test
@@ -62,6 +63,7 @@ public class AbrigoServiceTest {
         String actual = lines[0];
 
         Assertions.assertEquals(expected, actual);
+
     }
 
 }
